@@ -252,6 +252,41 @@ const uint8_t digital_pin_to_bit_PGM_ct[] = {
 	7         , // PK 7 ** 69 ** A15
 };
 
+
+#elif defined (__AVR_ATtiny85__) || defined (__AVR_ATtiny45__) || defined (__AVR_ATtiny25__)
+
+// these arrays map port names (e.g. port B) to the
+// appropriate addresses for various functions (e.g. reading
+// and writing)
+
+// ATTINY is very tiny and only has a single port (PORTB)
+
+volatile uint8_t * const port_to_output_PGM_ct[] = {
+	NOT_A_PORT,
+	NOT_A_PORT,
+	&PORTB,
+};
+
+// ATTINY is very tiny and only has 5 GPIO pins
+
+const uint8_t digital_pin_to_port_PGM_ct[] = {
+	PB, // 0
+	PB,
+	PB,
+	PB,
+	PB
+};
+
+const uint8_t digital_pin_to_bit_PGM_ct[] = {
+	0, // 1, port B
+	1,
+	2,
+	3,
+	4,
+};
+
+#define NO_SERIAL_AVAILABLE
+
 #elif defined(__AVR_ATmega32U4__)
 
 #if defined(CORE_TEENSY)
@@ -269,6 +304,7 @@ const uint8_t digital_pin_to_bit_PGM_ct[] = {
 	6,  7,  4,  5,  6,  7,  6,  5,  4,  1,  0,
 	4,  5,  6
 };
+
 #else
 //Assumes Arduino Leonardo
 volatile uint8_t * const port_to_output_PGM_ct[] = {
@@ -370,3 +406,4 @@ const uint8_t digital_pin_to_bit_PGM_ct[] = {
 
 
 #endif
+

@@ -25,12 +25,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 class CShiftPWM{
 public:
-	CShiftPWM(int timerInUse, bool noSPI, int latchPin, int dataPin, int clockPin);
+	CShiftPWM();
 	~CShiftPWM();
 
 public:
 	void Start(int ledFrequency, unsigned char max_Brightness);
-	void SetAmountOfRegisters(unsigned char newAmount);
+	void Stop();
+		
 	void SetPinGrouping(int grouping);
 	void PrintInterruptLoad(void);
 	void OneByOneSlow(void);
@@ -49,40 +50,37 @@ public:
 	void SetAllHSV(unsigned int hue, unsigned int sat, unsigned int val);
 
 private:
+
+	
 	void OneByOne_core(int delaytime);
 	bool IsValidPin(int pin);
-	void InitTimer1(void);
 	
-	#if defined(OCR3A)
-		// Arduino Leonardo or Micro (32u4)
-		void InitTimer3(void);
-	#endif
-
-	#if defined(OCR2A)
-		// Normal Arduino (328)
-		void InitTimer2(void);
-	#endif
-
-	bool LoadNotTooHigh(void);
-
-	const int m_timer;
-	const bool m_noSPI;
 	const int m_latchPin;
 	const int m_dataPin;
 	const int m_clockPin;
 
-	int m_prescaler;
-
-
 public:
-	int m_ledFrequency;
 	unsigned char m_maxBrightness;
+	int m_pinGrouping;
+	
+	unsigned char m_counter;
+	
 	unsigned char m_amountOfRegisters;
 	int m_amountOfOutputs;
-	int m_pinGrouping;
-	unsigned char * m_PWMValues;
-	unsigned char m_counter;
+	unsigned char *m_PWMValues;							// The actual storage is allocated in ShiftPWM.h as h_PWMValues
+	
+	unsigned char m_irqPrescaler;
 
 };
+
+// These are all defined inside the ShiftPWM.h, which gets its values from the user program that includes it. 
+
+extern const unsigned char h_amountOfRegisters;
+extern const int h_amountOfOutputs;
+extern unsigned char h_PWMValues[];
+
+extern const int h_latchPin;
+extern const int h_dataPin;
+extern const int h_clockPin;
 
 #endif

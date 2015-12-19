@@ -9,30 +9,23 @@
  * If you want to use ShiftPWM with LED strips or high power LED's, visit the shop for boards.
  */
 
-// ShiftPWM uses timer1 by default. To use a different timer, before '#include <ShiftPWM.h>', add
-// #define SHIFTPWM_USE_TIMER2  // for Arduino Uno and earlier (Atmega328)
-// #define SHIFTPWM_USE_TIMER3  // for Arduino Micro/Leonardo (Atmega32u4)
 
-// Clock and data pins are pins from the hardware SPI, you cannot choose them yourself.
-// Data pin is MOSI (Uno and earlier: 11, Leonardo: ICSP 4, Mega: 51, Teensy 2.0: 2, Teensy 2.0++: 22) 
-// Clock pin is SCK (Uno and earlier: 13, Leonardo: ICSP 3, Mega: 52, Teensy 2.0: 1, Teensy 2.0++: 21)
-
-// You can choose the latch pin yourself.
+// These are the Arduino pins connected to your shift register string
 const int ShiftPWM_latchPin=8;
+const int ShiftPWM_dataPin = 11;
+const int ShiftPWM_clockPin = 13;
 
-// ** uncomment this part to NOT use the SPI port and change the pin numbers. This is 2.5x slower **
-// #define SHIFTPWM_NOSPI
-// const int ShiftPWM_dataPin = 11;
-// const int ShiftPWM_clockPin = 13;
+// The number of 8-bit shift registers connected 
+const unsigned int ShiftPWM_numRegisters=5;       // The number of 8-bit shift registers connected
 
-
-// If your LED's turn on if the pin is low, set this to true, otherwise set it to false.
-const bool ShiftPWM_invertOutputs = false;
+// If your LED's turn on if the pin is low, set this to true, otherwise set it to fals
+const bool ShiftPWM_invertOutputs = false; 
 
 // You can enable the option below to shift the PWM phase of each shift register by 8 compared to the previous.
 // This will slightly increase the interrupt load, but will prevent all PWM signals from becoming high at the same time.
 // This will be a bit easier on your power supply, because the current peaks are distributed.
 const bool ShiftPWM_balanceLoad = false;
+
 
 #include <ShiftPWM.h>   // include ShiftPWM.h after setting the pins!
 
@@ -64,9 +57,6 @@ void setup(){
     delay(100); 
   }
   Serial.begin(9600);
-
-  // Sets the number of 8-bit registers that are used.
-  ShiftPWM.SetAmountOfRegisters(numRegisters);
 
   // SetPinGrouping allows flexibility in LED setup. 
   // If your LED's are connected like this: RRRRGGGGBBBBRRRRGGGGBBBB, use SetPinGrouping(4).
