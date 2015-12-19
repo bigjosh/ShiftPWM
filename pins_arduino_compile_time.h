@@ -23,6 +23,7 @@ These definitions are understood by the compiler and result in superfast code,
 but still allow you to use the arduino pin numbers instead of registers like PORTB
 
 (C) 2011-2012 Elco Jacobs. www.elcojacobs.com
+Modifications (c) 2015 Josh Levine www.josh.com
 
 */
 

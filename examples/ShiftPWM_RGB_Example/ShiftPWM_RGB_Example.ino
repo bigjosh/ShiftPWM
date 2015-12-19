@@ -1,5 +1,6 @@
 /************************************************************************************************************************************
  * ShiftPWM blocking RGB fades example, (c) Elco Jacobs, updated August 2012.
+ * with modifications (c)2015 Josh Levine [http://josh.com]
  *
  * ShiftPWM blocking RGB fades example. This example uses simple delay loops to create fades.
  * If you want to change the fading mode based on inputs (sensors, buttons, serial), use the non-blocking example as a starting point.

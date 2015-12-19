@@ -1,5 +1,6 @@
 /*
  * ShiftPWM non-blocking RGB fades example, (c) Elco Jacobs, updated August 2012.
+ * with modifications (c)2015 Josh Levine [http://josh.com]
  *
  * This example for ShiftPWM shows how to control your LED's in a non-blocking way: no delay loops.
  * This example receives a number from the serial port to set the fading mode. Instead you can also read buttons or sensors.

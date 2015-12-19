@@ -1,6 +1,7 @@
 /*
 ShiftPWM.h - Library for Arduino to PWM many outputs using shift registers
 Copyright (c) 2011-2012 Elco Jacobs, www.elcojacobs.com
+Modifications (c) 2015 Josh Levine www.josh.com
 All right reserved.
 
 This library is free software; you can redistribute it and/or
