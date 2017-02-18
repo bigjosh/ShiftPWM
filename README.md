@@ -1,8 +1,9 @@
 # ShiftPWM-Redux
 This is an Arduino Library for software PWM with shift registers based on the popular ShiftPWM library from Elco Jacobs.
 
-| If you are looking for a code compatible update to ShiftPWM that features 30% faster SPI performce, check out [this pull request](https://github.com/elcojacobs/ShiftPWM/pull/10)
---- |
+DO NOT USE THIS LIBRARY, I CAN NOT SUPPORT IT. |
+----|
+If you are looking for a code compatible update to ShiftPWM that features 30% faster SPI performce, check out [this pull request](https://github.com/elcojacobs/ShiftPWM/pull/10) |
 
 This fork features following benefits over the original...
 
